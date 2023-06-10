@@ -14,13 +14,16 @@ import 'package:ecommerce_app/src/features/product_page/product_average_rating.d
 import 'package:ecommerce_app/src/features/product_page/product_reviews/product_reviews_list.dart';
 import 'package:ecommerce_app/src/models/product.dart';
 
+/// Shows the product page for a given product ID.
 class ProductScreen extends StatelessWidget {
   const ProductScreen({super.key, required this.productId});
   final String productId;
 
   @override
   Widget build(BuildContext context) {
-    final product = kTestProducts.firstWhere((product) => product.id == productId);
+    // TODO: Read from data source
+    final product =
+        kTestProducts.firstWhere((product) => product.id == productId);
     return Scaffold(
       appBar: const HomeAppBar(),
       body: product == null
@@ -64,7 +67,8 @@ class ProductDetails extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Text(product.title, style: Theme.of(context).textTheme.titleLarge),
+              Text(product.title,
+                  style: Theme.of(context).textTheme.titleLarge),
               gapH8,
               Text(product.description),
               // Only show average if there is at least one rating
@@ -75,7 +79,8 @@ class ProductDetails extends StatelessWidget {
               gapH8,
               const Divider(),
               gapH8,
-              Text(priceFormatted, style: Theme.of(context).textTheme.headlineSmall),
+              Text(priceFormatted,
+                  style: Theme.of(context).textTheme.headlineSmall),
               gapH8,
               LeaveReviewAction(productId: product.id),
               const Divider(),
